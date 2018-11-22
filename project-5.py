@@ -1,10 +1,7 @@
-def women_cals(y, z, w, e):
-    result = (10 * z + 6.25 * w - 5 * y - 161)
-    total_result(result, e)
+def cals(y, z, w):
+    result = (10 * z + 6.25 * w - 5 * y)
+    return result
 
-def men_cals(y, z, w, e):
-    result = (10 * z + 6.25 * w - 5 * y + 5)
-    total_result(result, e)
 
 def total_result(result, e):
     if e == 1:
@@ -15,25 +12,51 @@ def total_result(result, e):
         total_result = result * 1.2
     return total_result
 
+def diet(x):
+    result = x * 0.8
+    return result
+
+def fast_diet(x):
+    result = x * 0.6
+    return result
 
 def main():
     print("Узнайте, сколько калорий Вам нужно потреблять в день:\n")
     try:
         gender = input('Введите пол. Если вы женщина введите "ж", мужчина -  "м": ').lower()
         while gender != "ж" and gender != "м":
-            gender = input('Вы ввели неверное значение. Если вы женщина введите "ж", мужчина -  "м": ').lower()
+            gender = input('Вы ввели неверное значение. '
+                           'Если вы женщина введите "ж", мужчина -  "м": ').lower()
+
         age = int(input('Сколько Вам полных лет?: '))
+
         weight = float(input('Введите свой вес (в киллограммах): '))
+
         height = float(input('Введите свой рост (в сантиметрах): '))
+
         print('Как часто вы занимаетесь спортом (физкультурой)?')
-        exercise = int(input('Введите: 1 - если часто; 2 - редко; 3 - вообще не занимаюсь: '))
+        exercise = int(input('Введите: 1 - если часто; 2 - редко; 3 - вообще не занимаюсь: \n'))
         while exercise != 1 and exercise != 2 and exercise != 3:
             exercise = int(input('Вы ввели неверное значение. Введите: 1 - если часто; 2 - редко;'
                              ' 3 - вообще не занимаюсь: '))
+
+        result = cals(age, weight, height)
+
         if gender == "ж":
-            result = women_cals(age, weight, height, exercise)
+            result -= 161
         elif gender == "м":
-            result = men_cals(age, weight, height, exercise)
+            result += 5
+
+        result = total_result(result, exercise)
+        print("Ваша суточная норма калорий = ", round(result))
+
+        result = diet(result)
+        print("Чтобы похудеть = ", round(result))
+
+        result = fast_diet(result)
+        while result <= (weight / 0.45) * 8:
+            result += 1
+        print("Быстрое похудение = ", round(result))
 
     except ValueError:
         print('Вы ввели неверное значение. Перезапустите программу для повторного рассчета.')
