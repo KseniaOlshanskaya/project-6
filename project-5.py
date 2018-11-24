@@ -12,13 +12,16 @@ def total_result(result, e):
         total_result = result * 1.2
     return total_result
 
+
 def diet(x):
     result = x * 0.8
     return result
 
+
 def fast_diet(x):
     result = x * 0.6
     return result
+
 
 def main():
     print("Узнайте, сколько калорий Вам нужно потреблять в день:\n")
@@ -60,5 +63,7 @@ def main():
 
     except ValueError:
         print('Вы ввели неверное значение. Перезапустите программу для повторного рассчета.')
+
+
 if __name__ == "__main__":
     main()
