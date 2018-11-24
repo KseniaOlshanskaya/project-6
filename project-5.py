@@ -48,15 +48,15 @@ def main():
             result += 5
 
         result = total_result(result, exercise)
-        print("Ваша суточная норма калорий = ", round(result))
+        print("Ваша суточная норма калорий = ", round(result), "ккал")
 
         result = diet(result)
-        print("Чтобы похудеть = ", round(result))
+        print("Чтобы похудеть = ", round(result), "ккал")
 
         result = fast_diet(result)
         while result <= (weight / 0.45) * 8:
             result += 1
-        print("Быстрое похудение = ", round(result))
+        print("Быстрое похудение = ", round(result), "ккал")
 
     except ValueError:
         print('Вы ввели неверное значение. Перезапустите программу для повторного рассчета.')
